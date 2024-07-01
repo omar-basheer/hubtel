@@ -25,21 +25,18 @@ class TransactionWidget extends StatelessWidget {
     return ListTile(
       leading: CircleAvatar(
         backgroundImage: AssetImage(serviceProviderLogo),
-        radius: 20,
       ),
       title: Text(sender),
       subtitle: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(time),
-          Text(status),
+        children: [
+          Text('Time: $time'),
+          Text('Status: $status'),
+          Text('Amount: $amount'),
+          Text('Tel Number: $telNumber'),
+          Text('Message: $message'),
         ],
       ),
-      trailing: Text(amount),
-      onTap: () {
-        // Handle transaction tap if needed
-      },
-      // Customize the ListTile as needed for your transaction details
     );
   }
 }
