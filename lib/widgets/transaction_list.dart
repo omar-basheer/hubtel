@@ -5,6 +5,7 @@ import 'transaction.dart'; // Import TransactionWidget
 class TransactionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    bool _isLoading = true;
     // Example data: List of dates with transactions for each date
     List<Map<String, dynamic>> transactionsByDate = [
       {
