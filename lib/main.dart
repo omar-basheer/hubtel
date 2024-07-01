@@ -1,6 +1,10 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
-import 'package:hubtel_app/widgets/navbar.dart';
-import 'widgets/navbar.dart'; // Import the Navbar widget
+import 'widgets/navbar.dart';
+import 'widgets/top_buttons.dart';
+import 'widgets/search.dart';
+import 'widgets/transaction_list.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,17 +14,29 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
+
       home: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+        ),
         backgroundColor: Colors.white,
-        body: Center(
-          child: Container(
-            width: 375.0,
-            height: 667.0,
-            color: Colors.white,
-            child: Center(
-                // Use the Navbar widget here
-                ),
-          ),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            TopButtons(
+              onHistoryPressed: () {
+              },
+              onSummaryPressed: () {
+
+              },
+            ),
+            SizedBox(height: 48),
+            SearchWidget(),
+            Expanded(
+              child: TransactionList(),
+            )
+          ],
         ),
         bottomNavigationBar: Navbar(),
       ),
