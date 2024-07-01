@@ -8,32 +8,93 @@ class TransactionList extends StatelessWidget {
     // Example data: List of dates with transactions for each date
     List<Map<String, dynamic>> transactionsByDate = [
       {
-        'date': 'July 1, 2024',
-        'transactions': ['Transaction 1', 'Transaction 2', 'Transaction 3'],
+        'date': 'April 24, 2022',
+        'transactions': [
+          {
+            'time': '10:00 AM',
+            'sender': 'Emmanuel Rockson Kwabena Uncle Ebo',
+            'serviceProviderLogo': 'assets/images/provider_logo.png',
+            'status': 'Successful',
+            'amount': '\$500',
+            'telNumber': '024 123 4567',
+            'message': 'cool your heart wai',
+          },
+          {
+            'time': '11:30 AM',
+            'sender': 'Absa bank',
+            'serviceProviderLogo': 'assets/images/provider_logo.png',
+            'status': 'Failed',
+            'amount': '\$25.00',
+            'telNumber': '024 123 4567',
+            'message': 'cool your heart wai',
+          },
+        ],
       },
       {
-        'date': 'June 30, 2024',
-        'transactions': ['Transaction 4', 'Transaction 5'],
+        'date': 'May 24, 2022',
+        'transactions': [
+          {
+            'time': '10:00 AM',
+            'sender': 'Emmanuel Rockson Kwabena Uncle Ebo',
+            'serviceProviderLogo': 'assets/images/provider_logo.png',
+            'status': 'Successful',
+            'amount': '\$500',
+            'telNumber': '024 123 4567',
+            'message': 'cool your heart wai',
+          },
+          {
+            'time': '11:30 AM',
+            'sender': 'Absa bank',
+            'serviceProviderLogo': 'assets/images/provider_logo.png',
+            'status': 'Failed',
+            'amount': '\$25.00',
+            'telNumber': '024 123 4567',
+            'message': 'cool your heart wai',
+          },
+        ],
       },
       {
-        'date': 'June 30, 2024',
-        'transactions': ['Transaction 4', 'Transaction 5'],
+        'date': 'June 24, 2022',
+        'transactions': [
+          {
+            'time': '10:00 AM',
+            'sender': 'Emmanuel Rockson Kwabena Uncle Ebo',
+            'serviceProviderLogo': 'assets/images/provider_logo.png',
+            'status': 'Successful',
+            'amount': '\$500',
+            'telNumber': '024 123 4567',
+            'message': 'cool your heart wai',
+          },
+          {
+            'time': '11:30 AM',
+            'sender': 'Absa bank',
+            'serviceProviderLogo': 'assets/images/provider_logo.png',
+            'status': 'Failed',
+            'amount': '\$25.00',
+            'telNumber': '024 123 4567',
+            'message': 'cool your heart wai',
+          },
+          {
+            'time': '10:00 AM',
+            'sender': 'Emmanuel Rockson Kwabena Uncle Ebo',
+            'serviceProviderLogo': 'assets/images/provider_logo.png',
+            'status': 'Successful',
+            'amount': '\$500',
+            'telNumber': '024 123 4567',
+            'message': 'cool your heart wai',
+          },
+        ],
       },
-      {
-        'date': 'June 30, 2024',
-        'transactions': ['Transaction 4', 'Transaction 5'],
-      },
-      {
-        'date': 'June 30, 2024',
-        'transactions': ['Transaction 4', 'Transaction 5'],
-      },
+
+      // Add more dates and transactions as needed
     ];
 
     return ListView.builder(
       itemCount: transactionsByDate.length,
       itemBuilder: (BuildContext context, int index) {
         String date = transactionsByDate[index]['date'];
-        List<String> transactions = List<String>.from(transactionsByDate[index]['transactions']);
+        List<Map<String, dynamic>> transactions =
+            List<Map<String, dynamic>>.from(transactionsByDate[index]['transactions']);
 
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,13 +111,19 @@ class TransactionList extends StatelessWidget {
               physics: NeverScrollableScrollPhysics(),
               itemCount: transactions.length,
               itemBuilder: (BuildContext context, int index) {
-                String transaction = transactions[index];
+                Map<String, dynamic> transaction = transactions[index];
                 return TransactionWidget(
-                  transactionDetails: transaction,
+                  time: transaction['time'],
+                  sender: transaction['sender'],
+                  serviceProviderLogo: transaction['serviceProviderLogo'],
+                  status: transaction['status'],
+                  amount: transaction['amount'],
+                  telNumber: transaction['telNumber'],
+                  message: transaction['message'],
                 );
               },
             ),
-            Divider(), 
+            Divider(), // Divider between date sections
           ],
         );
       },
